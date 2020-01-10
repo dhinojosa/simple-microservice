@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('checkout') {
 			steps {
-				scm checkout
+				scm 'https://github.com/dhinojosa/simple-microservice.git'
 			}
 		}
 		stage('deploy') {
