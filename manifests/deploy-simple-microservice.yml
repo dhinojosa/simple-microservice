@@ -20,15 +20,14 @@ spec:
         source: demo
     spec:
       containers:
-         - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/simple-microservice:latest
-           name: simple-microservice
-           ports:
-           - containerPort: 80
-           readinessProbe:
-             httpGet:
-               path: /
-               port: 80
-
+        - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/simple-microservice
+          name: simple-microservice
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
 ---
 
 kind: Service
