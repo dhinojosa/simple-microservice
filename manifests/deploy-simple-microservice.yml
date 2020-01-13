@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spinnaker
+    source: demo
+    stack: frontend
+  name: simple-microservice
+  namespace: staging
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: simple-microservice
+  template:
+    metadata:
+      labels:
+        app: spinnaker
+        run: simple-microservice
+        source: demo
+    spec:
+      containers:
+         - image: 219099013464.dkr.ecr.us-west-2.amazonaws.com/simple-microservice:latest
+           name: simple-microservice
+           ports:
+           - containerPort: 80
+           readinessProbe:
+             httpGet:
+               path: /
+               port: 80
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: spinnaker-demo
+  namespace: staging
+spec:
+  selector:
+    source: demo
+    app: spinnaker
+  ports:
+  - protocol: TCP
+    port: 30201
+    targetPort: 80
+  type: LoadBalancer
