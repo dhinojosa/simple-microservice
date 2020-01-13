@@ -1,5 +1,4 @@
-
-ode {
+node {
 	stage('Checkout') {
 		git 'https://github.com/dhinojosa/simple-microservice.git'
 	}
