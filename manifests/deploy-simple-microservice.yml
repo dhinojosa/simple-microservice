@@ -43,6 +43,7 @@ spec:
   - protocol: TCP
     port: 30201
     targetPort: 80
+  type: LoadBalancer
 
 ---
 
