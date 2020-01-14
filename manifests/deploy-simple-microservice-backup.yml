@@ -33,7 +33,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: spinnaker-service
+  name: spinnaker-demo
   namespace: staging
 spec:
   selector:
@@ -43,6 +43,7 @@ spec:
   - protocol: TCP
     port: 30201
     targetPort: 80
+  type: LoadBalancer
 
 ---
 
@@ -53,5 +54,5 @@ metadata:
   namespace: staging
 spec:
   backend:
-    serviceName: spinnaker-service
+    serviceName: spinnaker-demo
     servicePort: 80
