@@ -6,7 +6,7 @@ metadata:
     source: demo
     stack: frontend
   name: simple-microservice
-  namespace: staging
+  namespace: microservices
 spec:
   replicas: 3
   selector:
